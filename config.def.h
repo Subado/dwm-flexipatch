@@ -868,6 +868,14 @@ static const char *dmenucmd[] = {
 	NULL
 };
 static const char *termcmd[]  = { "st", NULL };
+static const char *flameshot[]  = { "flameshot", "gui", NULL };
+static const char *volup[]  = { "volup.sh", NULL };
+static const char *voldown[]  = { "voldown.sh", NULL };
+static const char *volmute[]  = { "volmute.sh", NULL };
+static const char *trsltru[]  = { "trsltru.sh", NULL };
+static const char *trslten[]  = { "trslten.sh", NULL };
+static const char *clstrsltru[]  = { "clstrsltru.sh", NULL };
+static const char *clstrslten[]  = { "clstrslten.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -893,8 +901,18 @@ static const Key on_empty_keys[] = {
 };
 #endif // ON_EMPTY_KEYS_PATCH
 
+#include <X11/XF86keysym.h>
+
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
+	{ 0,                            XK_Print,      spawn,                  {.v = flameshot} },
+	{ 0,                  XF86XK_AudioRaiseVolume, spawn,                  {.v = volup} },
+	{ 0,                  XF86XK_AudioLowerVolume, spawn,                  {.v = voldown} },
+	{ 0,                         XF86XK_AudioMute, spawn,                  {.v = volmute} },
+	{ MODKEY|ShiftMask,             XK_a,          spawn,                  {.v = trsltru } },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = trslten } },
+	{ MODKEY|ShiftMask,             XK_z,          spawn,                  {.v = clstrsltru } },
+	{ MODKEY|ShiftMask,             XK_x,          spawn,                  {.v = clstrslten } },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
