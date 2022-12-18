@@ -156,7 +156,10 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Hack Nerd Font:size=10" };
+static const char *fonts[]               = {
+	"Hack Nerd Font:size=10",
+	"Noto Color Emoji:size=10",
+};
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "Hack Nerd Font:size=10";
 
