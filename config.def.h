@@ -159,6 +159,13 @@ static const char font[]                 = "monospace 10";
 static const char *fonts[]               = {
 	"Hack Nerd Font:size=10",
 	"Noto Color Emoji:size=10",
+	"icomoon:pixelsize=14:antialias=true:autohint=true",
+	"Material Design Icons Desktop:pixelsize=16:antialias=true:autohint=true",
+	"Fira Code Regular Nerd Font Complete:pixelsize=15:antialias=true:autohint=true",
+	"Font Awesome 6 Brands Regular:pixelsize=15:antialias=true:autohint=true",
+	"Font Awesome 6 Free Solid:pixelsize=15:antialias=true:autohint=true",
+	"Font Awesome 6 Free Regular:pixelsize=15:antialias=true:autohint=true",
+	"font-awesome-extension:pixelsize=15:antialias=true:autohint=true",
 };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "Hack Nerd Font:size=10";
