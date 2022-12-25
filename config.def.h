@@ -868,11 +868,11 @@ static const char *dmenucmd[] = {
 	#if !NODMENU_PATCH
 	"-m", dmenumon,
 	#endif // NODMENU_PATCH
-	"-fn", dmenufont,
+	/* "-fn", dmenufont,
 	"-nb", normbgcolor,
 	"-nf", normfgcolor,
 	"-sb", selbgcolor,
-	"-sf", selfgcolor,
+	"-sf", selfgcolor, */
 	#if BAR_DMENUMATCHTOP_PATCH
 	topbar ? NULL : "-b",
 	#endif // BAR_DMENUMATCHTOP_PATCH
@@ -887,6 +887,7 @@ static const char *trsltru[]  = { "trsltru.sh", NULL };
 static const char *trslten[]  = { "trslten.sh", NULL };
 static const char *clstrsltru[]  = { "clstrsltru.sh", NULL };
 static const char *clstrslten[]  = { "clstrslten.sh", NULL };
+static const char *passmenu[]  = { "passmenu", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -924,6 +925,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = trslten } },
 	{ MODKEY|ShiftMask,             XK_z,          spawn,                  {.v = clstrsltru } },
 	{ MODKEY|ShiftMask,             XK_x,          spawn,                  {.v = clstrslten } },
+	{ MODKEY|ShiftMask,             XK_p,          spawn,                  {.v = passmenu } },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
