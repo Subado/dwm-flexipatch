@@ -878,16 +878,16 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "st", NULL };
-static const char *flameshot[]  = { "flameshot", "gui", NULL };
-static const char *volup[]  = { "volup.sh", NULL };
-static const char *voldown[]  = { "voldown.sh", NULL };
-static const char *volmute[]  = { "volmute.sh", NULL };
-static const char *trsltru[]  = { "trsltru.sh", NULL };
-static const char *trslten[]  = { "trslten.sh", NULL };
-static const char *clstrsltru[]  = { "clstrsltru.sh", NULL };
-static const char *clstrslten[]  = { "clstrslten.sh", NULL };
-static const char *passmenu[]  = { "passmenu", NULL };
+static const char *termcmd[] = { "st", NULL };
+static const char *flameshot[] = { "flameshot", "gui", NULL };
+static const char *trsltru[] = { "trsltru.sh", NULL };
+static const char *trslten[] = { "trslten.sh", NULL };
+static const char *clstrsltru[] = { "clstrsltru.sh", NULL };
+static const char *clstrslten[] = { "clstrslten.sh", NULL };
+static const char *passmenu[] = { "passmenu", NULL };
+static const char *volumeUp[] = { "volume.sh", "up", NULL };
+static const char *volumeDown[] = { "volume.sh", "down", NULL };
+static const char *volumeMute[] = { "volume.sh", "mute", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -917,10 +917,10 @@ static const Key on_empty_keys[] = {
 
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
-	{ 0,                            XK_Print,      spawn,                  {.v = flameshot} },
-	{ 0,                  XF86XK_AudioRaiseVolume, spawn,                  {.v = volup} },
-	{ 0,                  XF86XK_AudioLowerVolume, spawn,                  {.v = voldown} },
-	{ 0,                         XF86XK_AudioMute, spawn,                  {.v = volmute} },
+	{ 0,                            XK_Print,      spawn,                  {.v = flameshot } },
+	{ 0,                  XF86XK_AudioRaiseVolume, spawn,                  {.v = volumeUp } },
+	{ 0,                  XF86XK_AudioLowerVolume, spawn,                  {.v = volumeDown } },
+	{ 0,                         XF86XK_AudioMute, spawn,                  {.v = volumeMute } },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  {.v = trsltru } },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = trslten } },
 	{ MODKEY|ShiftMask,             XK_z,          spawn,                  {.v = clstrsltru } },
