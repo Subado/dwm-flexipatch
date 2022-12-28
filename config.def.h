@@ -889,6 +889,7 @@ static const char *volumeUp[] = { "volume.sh", "up", NULL };
 static const char *volumeDown[] = { "volume.sh", "down", NULL };
 static const char *volumeMute[] = { "volume.sh", "mute", NULL };
 static const char *dmenu_emoji[] = { "dmenu_emoji.sh", NULL };
+static const char *dmenu_books[] = { "dmenu_books.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -928,6 +929,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,          spawn,                  {.v = clstrslten } },
 	{ MODKEY|ShiftMask,             XK_p,          spawn,                  {.v = passmenu } },
 	{ MODKEY|ShiftMask,             XK_e,          spawn,                  {.v = dmenu_emoji } },
+	{ MODKEY|ShiftMask,             XK_b,          spawn,                  {.v = dmenu_books } },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
