@@ -1,4 +1,4 @@
-This dwm 6.4 (89f9905, 2022-12-07) side project has a different take on dwm patching. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build, for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches dwm-flexipatch has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. For the classic dwm-flexipatch build refer to branch [dwm-flexipatch-1.0](https://github.com/bakkeby/dwm-flexipatch/tree/dwm-flexipatch-1.0).
+This dwm 6.4 (e81f17d, 2023-04-09) side project has a different take on dwm patching. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build, for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches dwm-flexipatch has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. For the classic dwm-flexipatch build refer to branch [dwm-flexipatch-1.0](https://github.com/bakkeby/dwm-flexipatch/tree/dwm-flexipatch-1.0).
 
 For example to include the `alpha` patch then you would only need to flip this setting from 0 to 1 in [patches.h](https://github.com/bakkeby/dwm-flexipatch/blob/master/patches.def.h):
 ```c
@@ -616,7 +616,7 @@ Browsing patches? There is a [map of patches](https://coggle.it/diagram/X9IiSSM6
    - [rotatestack](https://dwm.suckless.org/patches/rotatestack/)
       - let's you rotate through the stack using keyboard shortcuts
 
-   - [roundedcorners](https://github.com/mitchweaver/suckless/blob/master/dwm/patches/mitch-06-rounded_corners-f04cac6d6e39cd9e3fc4fae526e3d1e8df5e34b2.patch)
+   - [roundedcorners](https://github.com/mitchweaver/suckless/blob/master/dwm/inactive/mitch-06-rounded_corners-f04cac6d6e39cd9e3fc4fae526e3d1e8df5e34b2.patch)
       - adds rounded corners to client windows
 
    - [savefloats](https://dwm.suckless.org/patches/save_floats/)

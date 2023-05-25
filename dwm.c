@@ -706,8 +706,10 @@ static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
-static void showhide(Client *c);
+#if COOL_AUTOSTART_PATCH
 static void sigchld(int unused);
+#endif // COOL_AUTOSTART_PATCH
+static void showhide(Client *c);
 static void spawn(const Arg *arg);
 #if RIODRAW_PATCH
 static pid_t spawncmd(const Arg *arg);
@@ -963,12 +965,7 @@ applyrules(Client *c)
 					if (r->switchtag == 3 || r->switchtag == 4)
 						c->switchtag = c->mon->tagset[c->mon->seltags];
 					if (r->switchtag == 1 || r->switchtag == 3) {
-						#if PERTAG_PATCH
-						pertagview(&((Arg) { .ui = newtagset }));
-						arrange(c->mon);
-						#else
 						view(&((Arg) { .ui = newtagset }));
-						#endif // PERTAG_PATCH
 					} else {
 						#if TAGSYNC_PATCH
 						for (m = mons; m; m = m->next)
@@ -3648,9 +3645,21 @@ setup(void)
 	XkbStateRec xkbstate;
 	#endif // XKB_PATCH
 	Atom utf8string;
-
+	#if COOL_AUTOSTART_PATCH
 	/* clean up any zombies immediately */
 	sigchld(0);
+	#else
+	struct sigaction sa;
+
+	/* do not transform children into zombies when they terminate */
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_NOCLDSTOP | SA_NOCLDWAIT | SA_RESTART;
+	sa.sa_handler = SIG_IGN;
+	sigaction(SIGCHLD, &sa, NULL);
+
+	/* clean up any zombies (inherited from .xinitrc etc) immediately */
+	while (waitpid(-1, NULL, WNOHANG) > 0);
+	#endif // COOL_AUTOSTART_PATCH
 
 	#if RESTARTSIG_PATCH
 	signal(SIGHUP, sighup);
@@ -3931,15 +3940,15 @@ showhide(Client *c)
 	}
 }
 
+#if COOL_AUTOSTART_PATCH
 void
 sigchld(int unused)
 {
-	#if COOL_AUTOSTART_PATCH
 	pid_t pid;
-	#endif // COOL_AUTOSTART_PATCH
+
 	if (signal(SIGCHLD, sigchld) == SIG_ERR)
 		die("can't install SIGCHLD handler:");
-	#if COOL_AUTOSTART_PATCH
+
 	while (0 < (pid = waitpid(-1, NULL, WNOHANG))) {
 		pid_t *p, *lim;
 
@@ -3954,10 +3963,8 @@ sigchld(int unused)
 			}
 		}
 	}
-	#else
-	while (0 < waitpid(-1, NULL, WNOHANG));
-	#endif // COOL_AUTOSTART_PATCH
 }
+#endif // COOL_AUTOSTART_PATCH
 
 #if RIODRAW_PATCH
 void
@@ -3973,6 +3980,8 @@ void
 spawn(const Arg *arg)
 #endif // RIODRAW_PATCH
 {
+	struct sigaction sa;
+
 	#if RIODRAW_PATCH
 	pid_t pid;
 	#endif // RIODRAW_PATCH
@@ -4038,6 +4047,12 @@ spawn(const Arg *arg)
 		}
 		#endif // SPAWNCMD_PATCH
 		setsid();
+
+		sigemptyset(&sa.sa_mask);
+		sa.sa_flags = 0;
+		sa.sa_handler = SIG_DFL;
+		sigaction(SIGCHLD, &sa, NULL);
+
 		execvp(((char **)arg->v)[0], (char **)arg->v);
 		die("dwm: execvp '%s' failed:", ((char **)arg->v)[0]);
 	}

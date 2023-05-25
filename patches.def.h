@@ -225,7 +225,7 @@
  * you need it.
  */
 #define BAR_TITLE_RIGHT_PAD_PATCH 0
-#define BAR_TITLE_LEFT_PAD_PATCH 1
+#define BAR_TITLE_LEFT_PAD_PATCH 0
 
 /**
  * Bar options
@@ -874,7 +874,7 @@
  */
 #define PERTAG_PATCH 0
 
-/* Option to store gaps on a per tag basis rather than on a per monitor basis.
+/* Option to enable gaps on a per tag basis rather than globally.
  * Depends on both pertag and vanitygaps patches being enabled.
  */
 #define PERTAG_VANITYGAPS_PATCH 0
