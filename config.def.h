@@ -879,9 +879,9 @@ static const char *trslten[] = { "trslten.sh", NULL };
 static const char *clstrsltru[] = { "clstrsltru.sh", NULL };
 static const char *clstrslten[] = { "clstrslten.sh", NULL };
 static const char *passmenu[] = { "passmenu", NULL };
-static const char *volumeUp[] = { "volume.sh", "up", NULL };
-static const char *volumeDown[] = { "volume.sh", "down", NULL };
-static const char *volumeMute[] = { "volume.sh", "mute", NULL };
+static const char *volume_up[] = { "volume.sh", "up", NULL };
+static const char *volume_down[] = { "volume.sh", "down", NULL };
+static const char *volume_mute[] = { "volume.sh", "mute", NULL };
 static const char *dmenu_emoji[] = { "dmenu_emoji.sh", NULL };
 static const char *dmenu_books[] = { "dmenu_books.sh", NULL };
 
@@ -914,9 +914,9 @@ static const Key on_empty_keys[] = {
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
 	{ 0,                            XK_Print,      spawn,                  {.v = flameshot } },
-	{ 0,                  XF86XK_AudioRaiseVolume, spawn,                  {.v = volumeUp } },
-	{ 0,                  XF86XK_AudioLowerVolume, spawn,                  {.v = volumeDown } },
-	{ 0,                         XF86XK_AudioMute, spawn,                  {.v = volumeMute } },
+	{ 0,                  XF86XK_AudioRaiseVolume, spawn,                  {.v = volume_up } },
+	{ 0,                  XF86XK_AudioLowerVolume, spawn,                  {.v = volume_down } },
+	{ 0,                         XF86XK_AudioMute, spawn,                  {.v = volume_mute } },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  {.v = trsltru } },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = trslten } },
 	{ MODKEY|ShiftMask,             XK_z,          spawn,                  {.v = clstrsltru } },
