@@ -882,8 +882,8 @@ static const char *passmenu[] = { "passmenu", NULL };
 static const char *volume_up[] = { "volume.sh", "up", NULL };
 static const char *volume_down[] = { "volume.sh", "down", NULL };
 static const char *volume_mute[] = { "volume.sh", "mute", NULL };
-static const char *dmenu_emoji[] = { "dmenu_emoji.sh", NULL };
-static const char *dmenu_books[] = { "dmenu_books.sh", NULL };
+static const char *dmenu_emoji[] = { "dmenu-emoji.sh", NULL };
+static const char *dmenu_books[] = { "dmenu-books.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
