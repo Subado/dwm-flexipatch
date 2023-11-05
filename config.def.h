@@ -171,6 +171,7 @@ static const char *fonts[]               = {
   "Font Awesome 6 Free Solid:pixelsize=15:antialias=true:autohint=true",
   "Font Awesome 6 Free Regular:pixelsize=15:antialias=true:autohint=true",
   "font-awesome-extension:pixelsize=15:antialias=true:autohint=true",
+  "codicon:pixelsize=15:antialias=true:autohint=true",
 };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "Hack Nerd Font:size=10";
